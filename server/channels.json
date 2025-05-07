@@ -1,0 +1,94 @@
+{
+    "channels": {
+        "HIHI": {
+            "host": "Nga",
+            "participants": [
+                "Nga",
+                "Hi",
+                "Gu"
+            ],
+            "messages": [
+                {
+                    "username": "System",
+                    "message": "User 'Nga' has joined the channel.",
+                    "timestamp": "2025-05-07T14:48:19.538118Z",
+                    "event_type": "USER_JOINED_CHANNEL"
+                },
+                {
+                    "username": "Nga",
+                    "message": "Hiiiiii",
+                    "timestamp": "2025-05-07T14:48:30.816893Z"
+                },
+                {
+                    "username": "Nga",
+                    "message": "Hiii",
+                    "timestamp": "2025-05-07T14:49:11.997615Z"
+                },
+                {
+                    "username": "Nga",
+                    "message": "Hiii",
+                    "timestamp": "2025-05-07T14:49:18.408759Z"
+                },
+                {
+                    "username": "System",
+                    "message": "User 'Hi' has joined the channel.",
+                    "timestamp": "2025-05-07T14:49:54.226574Z",
+                    "event_type": "USER_JOINED_CHANNEL"
+                },
+                {
+                    "username": "Hi",
+                    "message": "11111111",
+                    "timestamp": "2025-05-07T14:50:22.883276Z"
+                },
+                {
+                    "username": "Nga",
+                    "message": "222222222",
+                    "timestamp": "2025-05-07T14:50:41.755127Z"
+                },
+                {
+                    "username": "System",
+                    "message": "LIVESTREAM_START",
+                    "streamer": "Nga",
+                    "host": "127.0.0.1",
+                    "port": 5001,
+                    "timestamp": "2025-05-07T14:54:28.810282Z"
+                },
+                {
+                    "username": "System",
+                    "message": "User 'Nga' has joined the channel.",
+                    "timestamp": "2025-05-07T15:03:48.795496Z",
+                    "event_type": "USER_JOINED_CHANNEL"
+                },
+                {
+                    "username": "System",
+                    "message": "User 'Hi' has joined the channel.",
+                    "timestamp": "2025-05-07T15:04:34.979847Z",
+                    "event_type": "USER_JOINED_CHANNEL"
+                },
+                {
+                    "username": "System",
+                    "message": "LIVESTREAM_START",
+                    "streamer": "Nga",
+                    "host": "127.0.0.1",
+                    "port": 5001,
+                    "timestamp": "2025-05-07T15:04:47.730506Z"
+                },
+                {
+                    "username": "Nga",
+                    "message": "hIII",
+                    "timestamp": "2025-05-07T15:05:20.958886Z"
+                },
+                {
+                    "username": "Nga",
+                    "message": "Xin Chao",
+                    "timestamp": "2025-05-07T15:06:06.748320Z"
+                },
+                {
+                    "username": "Hi",
+                    "message": "Xin chaooo",
+                    "timestamp": "2025-05-07T15:06:27.694727Z"
+                }
+            ]
+        }
+    }
+}

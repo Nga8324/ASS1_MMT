@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "username": "Nga",
+            "password": "123",
+            "status": "offline"
+        },
+        {
+            "username": "Hi",
+            "password": "1234",
+            "status": "offline"
+        },
+        {
+            "username": "Ho",
+            "password": "12345",
+            "status": "offline"
+        }
+    ]
+}
