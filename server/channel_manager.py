@@ -514,9 +514,7 @@ def handle_sync_from_server(client_socket, request):
 
         response = {"status": "success", "messages": messages}
         client_socket.send(json.dumps(response).encode('utf-8'))
-        log_info(f"Sent {len(messages)} messages for channel '{channel_name}' during sync from server.")
 
     except Exception as e:
-        response = {"status": "error", "message": f"An error occurred during sync from server: {str(e)}"}
         client_socket.send(json.dumps(response).encode('utf-8'))
         log_error(f"Error in handle_sync_from_server: {str(e)}")

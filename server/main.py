@@ -172,7 +172,6 @@ def route_request(client_socket, data):
     global connected_clients, user_roles # Ensure user_roles is accessible
     addr_info = client_socket.getpeername() if client_socket and client_socket.fileno() != -1 else "Unknown Address"
     try:
-        log_debug(f"Routing data from {addr_info}: {data}") # Use debug level if too verbose
         request_type = data.get("type")
 
         # Get authenticated user based on the socket connection
@@ -561,7 +560,7 @@ def update_user_channel_presence(username, current_status):
     """Updates the online/offline lists in channel_users based on user's status."""
     global channel_users
     is_present_online = current_status == "online" # Only 'online' counts as present
-    log_debug(f"Updating channel presence for '{username}' (Status: {current_status}, PresentOnline: {is_present_online})")
+    # log_debug(f"Updating channel presence for '{username}' (Status: {current_status}, PresentOnline: {is_present_online})")
 
     for channel_name, channel_data in channel_users.items():
         online_list = channel_data.setdefault("online", [])
@@ -587,7 +586,7 @@ def update_user_channel_presence(username, current_status):
         else: # offline or invisible
             if username not in offline_list: # Avoid duplicates
                  offline_list.append(username)
-                 if not was_offline: log_debug(f"'{username}' added to offline list for '{channel_name}'.")
+                #  if not was_offline: log_debug(f"'{username}' added to offline list for '{channel_name}'.")
             # else: was already offline, no change needed after removal/add
 
         # Log if presence state changed
@@ -634,8 +633,8 @@ def handle_client_disconnection(client_socket, username):
             if username in channel_data.get("offline", []):
                 channel_data["offline"].remove(username)
                 removed_offline = True
-            if removed_online or removed_offline:
-                 log_debug(f"Removed '{username}' from presence lists for channel '{channel_name}'.")
+            # if removed_online or removed_offline:
+            #      log_debug(f"Removed '{username}' from presence lists for channel '{channel_name}'.")
 
         # --- 3. Update RAM status (user_status) ---
         # Vẫn cập nhật RAM status để phản ánh trạng thái logic cuối cùng

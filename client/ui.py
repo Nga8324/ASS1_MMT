@@ -880,9 +880,6 @@ def main_screen(client_socket, username, user_role):
         try:
             # print(f"Fetching user status for channel: {current_channel}") # Bỏ comment nếu cần debug
             response = list_online_users(client_socket, current_channel)
-            # !!! QUAN TRỌNG: In ra phản hồi từ server để chẩn đoán !!!
-            print(f"[DEBUG UI - fetch_user_status] Server response for user list ({current_channel}): {response}") # Bỏ comment dòng này
-
             if response and response.get("status") == "success":
                 new_online = response.get("online", [])
                 new_offline = response.get("offline", [])

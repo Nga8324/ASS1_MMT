@@ -1,4 +1,4 @@
-# Project Title: Chat Application with Livestreaming
+# Project Title: Chat Application 
 
 ## Description
 

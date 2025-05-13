@@ -279,8 +279,6 @@ def list_online_users(client_socket, channel_name):
         if response and response.get("status") == "success":
             online_list = response.get('online', [])
             offline_list = response.get('offline', [])
-            log_info(f"Online users in '{channel_name}': {online_list}")
-            log_info(f"Offline users in '{channel_name}': {offline_list}")
             # Lưu ý: User 'invisible' có thể xuất hiện trong danh sách 'offline' tùy theo logic của server
         elif response: # Nhận được phản hồi, nhưng status không phải là "success"
             error_msg = response.get('message', 'No message provided')
@@ -331,7 +329,6 @@ def list_channels(client_socket):
 
         if response_data.get("status") == "success":
             channels = response_data.get("channels", [])
-            log_info(f"Available channels: {channels}")
         else:
             log_error(f"Failed to list channels: {response_data.get('message')}")
         return response_data
@@ -385,8 +382,6 @@ def send_delete_channel_request(client_socket, channel_name, username):
         return {"status": "error", "message": str(e)}
 
 # --- Sync Functions ---
-
-
 
 def request_sync_from_server(client_socket, channel_name, username): # Added username for server check
     """Requests all messages for a channel from the server."""
@@ -515,7 +510,6 @@ def handle_client_online(client_socket, username, current_channel):
                 log_info(f"No local messages to sync for channel '{current_channel}'.")
                 synced_successfully = True # No sync needed is also a success for this phase
         else:
-            log_info(f"No local cache found for channel '{current_channel}'.")
             synced_successfully = True # No sync needed
 
         log_info("Phase 1 (Sync TO Server) finished.")
@@ -533,7 +527,6 @@ def handle_client_online(client_socket, username, current_channel):
         sync_response = request_sync_from_server(client_socket, current_channel, username)
         if sync_response and sync_response.get("status") == "success":
             server_messages = sync_response.get("messages", [])
-            log_info(f"Successfully fetched {len(server_messages)} messages for '{current_channel}' from server.")
             # The UI layer will be responsible for merging/displaying these messages
         else:
             error_msg = sync_response.get('message', 'Unknown error') if sync_response else 'No response'
@@ -574,17 +567,17 @@ def send_message(client_socket, channel_name, message, username):
         response = receive_json_response(client_socket, timeout=5.0) # 5 second timeout for send confirmation
 
         # Log success/error based on server response status
-        if response.get("status") == "success":
-             log_info(f"Server confirmed message saved: {response.get('message_data')}")
-        elif response.get("status") == "error":
-             log_error(f"Server returned error for send_message: {response.get('message')}")
-             # Decide if we should save locally on server error (e.g., auth mismatch)?
-             # For now, let's NOT save locally if server explicitly rejected it.
-        else:
-             # Handle unexpected status or connection issues during receive
-             log_error(f"Unexpected response status or connection issue receiving send confirmation: {response}. Saving locally.")
-             save_local_message(channel_name, username, message)
-             return {"status": "offline_save", "message": f"Receive error/timeout: {response.get('message', 'Unknown')}. Message saved locally."}
+        # if response.get("status") == "success":
+        #      log_info(f"Server confirmed message saved: {response.get('message_data')}")
+        # elif response.get("status") == "error":
+        #      log_error(f"Server returned error for send_message: {response.get('message')}")
+        #      # Decide if we should save locally on server error (e.g., auth mismatch)?
+        #      # For now, let's NOT save locally if server explicitly rejected it.
+        # else:
+        #      # Handle unexpected status or connection issues during receive
+        #      log_error(f"Unexpected response status or connection issue receiving send confirmation: {response}. Saving locally.")
+        #      save_local_message(channel_name, username, message)
+        #      return {"status": "offline_save", "message": f"Receive error/timeout: {response.get('message', 'Unknown')}. Message saved locally."}
 
         return response # Return the full server response (success or error)
 

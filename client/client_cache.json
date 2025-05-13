@@ -1,22 +1,5 @@
 {
-    "HAHA": {
-        "messages": []
-    },
     "MMT": {
-        "messages": [
-            {
-                "username": "Nga",
-                "message": "ddd",
-                "timestamp": "2025-05-07T08:31:25.794563Z"
-            },
-            {
-                "username": "Nga",
-                "message": "Chao",
-                "timestamp": "2025-05-07T08:34:19.986110Z"
-            }
-        ]
-    },
-    "HIHI": {
         "messages": []
     }
 }
